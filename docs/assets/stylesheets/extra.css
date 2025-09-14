@@ -1,0 +1,10 @@
+/* Custom warm and welcoming theme */
+:root {
+  --md-primary-fg-color:        #5D4037; /* A warm brown */
+  --md-accent-fg-color:         #FFA000; /* A gentle amber */
+}
+
+[data-md-color-scheme="default"] {
+  --md-default-fg-color: #333;
+  --md-default-bg-color: #fdfdfd; /* Slightly off-white background */
+}

@@ -1,0 +1,62 @@
+site_name: "Dr. Job Schepens"
+site_author: "Dr. Job Schepens"
+site_url: "https://jobschepens.github.io/personal-page/"
+
+theme:
+  name: material
+  language: en
+  custom_dir: docs/overrides
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: brown
+      accent: amber
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue
+      accent: light-blue
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.top
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+
+extra:
+  social:
+    - icon: fontawesome/brands/google-scholar
+      link: https://scholar.google.de/citations?user=4S18kYgAAAAJ&hl
+    - icon: fontawesome/brands/orcid
+      link: https://orcid.org/0000-0003-1271-2526
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/job-schepens/
+    - icon: fontawesome/brands/github
+      link: https://github.com/jobschepens
+  extra_css:
+    - assets/stylesheets/extra.css
+
+nav:
+  - Home: index.md
+  - Publications: publications.md
+  - CV: cv.md
+
+plugins:
+  - search
+  - git-revision-date-localized:
+      type: timeago
+  - bibtex:
+      bib_file: docs/references.bib
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.superfences
+  - footnotes
