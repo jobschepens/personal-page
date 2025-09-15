@@ -1,5 +1,5 @@
-site_name: "Dr. Job Schepens"
-site_author: "Dr. Job Schepens"
+site_name: "Job Schepens"
+site_author: "Job Schepens"
 site_url: "https://jobschepens.github.io/personal-page/"
 
 theme:
@@ -22,11 +22,14 @@ theme:
         icon: material/weather-sunny
         name: Switch to light mode
   features:
-    - navigation.tabs
-    - navigation.top
+    # - navigation.tabs
+    # - navigation.top
     - content.code.copy
     - search.suggest
     - search.highlight
+    # - content.tabs.link
+    - content.code.annotate
+    - content.footnote.tooltips
 
 extra:
   social:
@@ -41,8 +44,8 @@ extra:
   extra_css:
     - assets/stylesheets/extra.css
 
-nav:
-  - Home: index.md
+# nav:
+#   - Home: index.md
 
 plugins:
   - search

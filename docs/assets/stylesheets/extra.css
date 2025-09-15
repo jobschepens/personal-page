@@ -8,3 +8,8 @@
   --md-default-fg-color: #333;
   --md-default-bg-color: #fdfdfd; /* Slightly off-white background */
 }
+
+/* Hide the main heading on the homepage */
+.md-content h1:first-child {
+  display: none;
+}
