@@ -5,7 +5,6 @@ site_url: "https://jobschepens.github.io/personal-page/"
 theme:
   name: material
   language: en
-  custom_dir: docs/overrides
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
