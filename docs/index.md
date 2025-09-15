@@ -2,9 +2,9 @@
 
 ## About Me
 
-I am a postdoctoral researcher at the **Universität zu Köln**, working in the Center for Digital Humanities and Center for Linguistics. My research focuses on **linguistic distance**, **transfer learning**, and **computational modeling** in language learning and processing.
+I am a postdoctoral researcher at the **Universität zu Köln**, Center for Digital Humanities. Half of the time, I work for the SFB1252: Prominence in Language as a Service Project member focusing on research data and methods. The other half, I work for the Key Profile Area: Skills and Structures in Language and Cognition, where I focus on a research project on using LLMs for Word Frequency estimations. Generally, my research focuses on **linguistic distance**, **transfer learning**, and **computational modeling** in language learning and processing.
 
-With over 6 years of postdoctoral experience, I have contributed to projects at leading institutions including TU Dortmund, Freie Universität Berlin, and the Max Planck Institute for Human Development.
+Since I received my PhD in 2015 from Radboud University Nijmegen, I have contributed to projects at institutions including TU Dortmund, Freie Universität Berlin, and the Max Planck Institute for Human Development, Berlin.
 
 ## Research Interests
 
@@ -13,11 +13,28 @@ With over 6 years of postdoctoral experience, I have contributed to projects at 
 - Educational research and data science in linguistics
 - Large Language Models in psycholinguistics
 
-## Affiliations
+# Publications
 
-- **Universität zu Köln** - Wissenschaftlicher Mitarbeiter (2023-Present)
-- **TU Dortmund** - Wissenschaftlicher Mitarbeiter (2019-2022)
-- **Freie Universität Berlin** - Wissenschaftlicher Mitarbeiter (2016-2019)
+## Key Publications
+
+**Schepens, J., Woloszyn, H., Marx, N., & Gagl, B. (2024). Can Large Language Models generate useful linguistic corpora? A case study of the word frequency effect in young German readers. Accepted July 2025 in *Open Mind***
+[osf.io/preprints/psyarxiv/gm9b6_v5](https://osf.io/preprints/psyarxiv/gm9b6_v5)
+
+**Schepens, J., van Hout, R., & Jaeger, T. F. (2020). Big data suggest strong constraints of linguistic similarity on adult language learning. *Cognition, 194: 104056.***
+[doi.org/10.1016/j.cognition.2019.104056](https://doi.org/10.1016/j.cognition.2019.104056)
+
+**Schepens, J., Van der Slik, F., & Van Hout, R. (2016). L1 and L2 distance effects in L3 Dutch learnability. *Language Learning, 66(1): 224–256.**
+[doi.org/10.1111/lang.12150](https://doi.org/10.1111/lang.12150)
+
+## Complete Publication List
+
+For a complete list of all my publications, please visit my [Google Scholar profile](https://scholar.google.de/citations?user=4S18kYgAAAAJ&hl).
+
+# Curriculum Vitae
+
+Download as a PDF document:
+
+[📄 Download CV (PDF)](assets/schepens-cv-250914.pdf)
 
 ## Contact
 
@@ -27,5 +44,3 @@ With over 6 years of postdoctoral experience, I have contributed to projects at 
 - [Google Scholar](https://scholar.google.de/citations?user=4S18kYgAAAAJ&hl)
 
 ---
-
-*This website showcases my academic work, publications, and professional background. Feel free to explore the sections above for more details.*

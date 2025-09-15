@@ -43,8 +43,6 @@ extra:
 
 nav:
   - Home: index.md
-  - Publications: publications.md
-  - CV: cv.md
 
 plugins:
   - search
