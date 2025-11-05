@@ -20,8 +20,8 @@ Since I received my PhD in 2015 from Radboud University Nijmegen, I have contrib
 
 ### Key Publications
 
-**Schepens, J., Woloszyn, H., Marx, N., & Gagl, B. (2024). Can Large Language Models generate useful linguistic corpora? A case study of the word frequency effect in young German readers. Accepted July 2025 in *Open Mind***
-[osf.io/preprints/psyarxiv/gm9b6_v5](https://osf.io/preprints/psyarxiv/gm9b6_v5)
+**Schepens, J., Woloszyn, H., Marx, N., & Gagl, B. (2024). Can Large Language Models generate useful linguistic corpora? A case study of the word frequency effect in young German readers. *Open Mind***
+[doi.org/10.1162/OPMI.a.30](https://direct.mit.edu/opmi/article/doi/10.1162/OPMI.a.30/133663/Can-Large-Language-Models-Generate-Useful)
 
 **Schepens, J., van Hout, R., & Jaeger, T. F. (2020). Big data suggest strong constraints of linguistic similarity on adult language learning. *Cognition, 194: 104056.***
 [doi.org/10.1016/j.cognition.2019.104056](https://doi.org/10.1016/j.cognition.2019.104056)
