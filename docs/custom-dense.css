@@ -1,0 +1,103 @@
+/* Custom CSS for dense code review presentation */
+
+.reveal {
+  font-size: 28px;
+}
+
+.reveal h1 {
+  font-size: 1.8em;
+  margin-bottom: 0.5em;
+}
+
+.reveal h2 {
+  font-size: 1.4em;
+  margin-bottom: 0.4em;
+}
+
+.reveal h3 {
+  font-size: 1.1em;
+  margin-bottom: 0.3em;
+}
+
+.reveal .smaller {
+  font-size: 0.55em;
+  line-height: 1.3;
+}
+
+.reveal .smallest {
+  font-size: 0.45em;
+  line-height: 1.2;
+}
+
+.reveal table {
+  font-size: 0.75em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.reveal table th,
+.reveal table td {
+  padding: 0.3em 0.5em;
+}
+
+.reveal pre {
+  font-size: 0.55em;
+  margin: 0.5em 0;
+}
+
+.reveal code {
+  font-size: 0.9em;
+}
+
+.reveal ul,
+.reveal ol {
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+}
+
+.reveal li {
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
+}
+
+.reveal p {
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+}
+
+.reveal blockquote {
+  font-size: 0.85em;
+  padding: 0.5em;
+  margin: 0.5em 0;
+}
+
+.reveal .columns {
+  display: flex;
+  gap: 1em;
+}
+
+.reveal .column {
+  flex: 1;
+}
+
+/* Ensure content doesn't overflow */
+.reveal .slides {
+  width: 100%;
+  height: 100%;
+}
+
+.reveal .slide-content {
+  height: 100%;
+  overflow: auto;
+}
+
+/* Compact spacing */
+.compact {
+  margin-top: 0.2em !important;
+  margin-bottom: 0.2em !important;
+}
+
+.compact li {
+  margin-top: 0.1em !important;
+  margin-bottom: 0.1em !important;
+}

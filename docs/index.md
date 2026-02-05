@@ -58,7 +58,13 @@ For a complete and most up-to-date list of all my publications, please visit my 
 
 ---
 
-## 📞 Contact
+## � Recent Presentations
+
+- Code Review Strategies in AI-Assisted Programming. Presented at the University of Cologne Competence Days "AI in Higher Education" [html](clausemate-review-dense.html) or [pdf](clausemate-review-slides.pdf)
+
+---
+
+## �📞 Contact
 
 - **Email**: jobschepens@gmail.com
 - **ORCID**: [0000-0003-1271-2526](https://orcid.org/0000-0003-1271-2526)

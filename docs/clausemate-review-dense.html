@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="clausemate-review-dense_files/libs/clipboard/clipboard.min.js"></script>
+<script src="clausemate-review-dense_files/libs/quarto-html/tabby.min.js"></script>
+<script src="clausemate-review-dense_files/libs/quarto-html/popper.min.js"></script>
+<script src="clausemate-review-dense_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="clausemate-review-dense_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="clausemate-review-dense_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="clausemate-review-dense_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.27">
+
+  <meta name="author" content="Job Schepens">
+  <meta name="dcterms.date" content="2026-02-05">
+  <title>Code Review Strategies in AI-Assisted Programming</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="clausemate-review-dense_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="clausemate-review-dense_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="clausemate-review-dense_files/libs/revealjs/dist/theme/quarto-534cd8e3a96973385dffff3f4709048d.css">
+  <link rel="stylesheet" href="custom-dense.css">
+  <link href="clausemate-review-dense_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="clausemate-review-dense_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="clausemate-review-dense_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="clausemate-review-dense_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Code Review Strategies in AI-Assisted Programming</h1>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Job Schepens 
+</div>
+</div>
+</div>
+
+  <p class="date">February 5, 2026</p>
+</section>
+<section id="overview" class="slide level2 smaller">
+<h2>Overview</h2>
+<div class="columns">
+<div class="column" style="width:48%;">
+<p><strong>This talk:</strong></p>
+<ul>
+<li>Explore code-review strategies in AI-assisted programming</li>
+<li>not an endorsement of AI use</li>
+<li>Goal: think about incorporating critical thinking when using AI</li>
+</ul>
+<p><strong>What is AI?</strong></p>
+<p>Here: Focus on LLMs, preferably open models such as Mistral 24B via chat.kiconnect.nrw, etc. that generate code based on prompts, used via a terminal, IDE, software integration, or browser. Most models are closed source (not transparent), not EU-based, dependent on company support, etc, see also <a href="https://itcc.uni-koeln.de/services/software/kuenstliche-intelligenz/ki-whitelist">KI-Whitelist der Universität zu Köln</a>.</p>
+<p><strong>Example use-cases:</strong></p>
+<ul>
+<li>Conversation-like ‘sounding board’ for identifying problems and suggesting improvements, reflects on code structure, judges quality</li>
+<li>Implementation assistant that generates code from scratch, corrects mistakes, etc.</li>
+</ul>
+</div><div class="column" style="width:52%;">
+<p><strong>Many guidelines, laws, regulations:</strong></p>
+<ul>
+<li><strong>EU AI Act</strong>
+<ul>
+<li>puts duties on AI providers and on organisations that use AI</li>
+</ul></li>
+<li><strong>UzK KI-Richtlinie</strong>
+<ul>
+<li><a href="https://am.uni-koeln.de/e45267/data/records54900/AM_2026-02_KI_RL_ger.pdf">PDF</a> (27.1.2026)</li>
+</ul></li>
+<li><strong>ACL (2023)</strong>
+<ul>
+<li>Focus on transparency and accountability</li>
+<li><a href="https://aclrollingreview.org/responsibleNLPresearch/">Responsible NLP Research/</a></li>
+</ul></li>
+<li><strong>Wikipedia</strong>
+<ul>
+<li>Focus on verification</li>
+<li><a href="https://en.wikipedia.org/wiki/Wikipedia:Writing_articles_with_large_language_models">Do not generate articles from scratch</a></li>
+<li><a href="https://wikiedu.org/blog/2026/01/29/generative-ai-and-wikipedia-editing-what-we-learned-in-2025/">Only in training modules: Never copy-paste from GenAI</a></li>
+</ul></li>
+<li><strong>DFG (German Research Foundation)</strong>
+<ul>
+<li>Focus on transparency and existing standards for research integrity</li>
+<li><a href="https://wissenschaftliche-integritaet.de/verwendung-generativer-modelle/">wissenschaftliche-integritaet.de</a></li>
+</ul></li>
+</ul>
+</div></div>
+</section>
+<section id="ai-risks-and-uncritical-ai-literacy" class="slide level2 smaller">
+<h2>AI Risks and (Un)critical AI Literacy?</h2>
+<div class="columns">
+<div class="column" style="width:48%;">
+<p>AI Act (as based on <a href="https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/">FOI compliance checker</a>):</p>
+<ul>
+<li>“No risk”:
+<ul>
+<li>the AI system is intended to perform a narrow procedural task;</li>
+<li>the AI system is intended to improve the result of a previously completed human activity;</li>
+<li>and more</li>
+</ul></li>
+<li>“General Purpose AI models with Systemic Risk”
+<ul>
+<li>includes GPT 4 OSS through Academic Cloud / nrw.connect?</li>
+</ul></li>
+<li>“Prohibited systems”
+<ul>
+<li>e.g.&nbsp;exploiting vulnerabilities, manipulation, emotion recognition, etc.</li>
+</ul></li>
+<li>“AI Literacy obligations”</li>
+</ul>
+<blockquote>
+<p>“universities need to take their role seriously to safeguard higher education, critical thinking, expertise, academic freedom, and scientific integrity” (Guest et al., 2025)</p>
+</blockquote>
+</div><div class="column" style="width:52%;">
+<p>Critical AI literacy criticism includes (e.g.&nbsp;Guest et al., 2025):</p>
+<ul>
+<li>social and environmental harms</li>
+<li>unaligned with university values of critical thinking and scientific integrity</li>
+<li>deskilling of researchers</li>
+<li>‘critical washing’ — encouraging AI use while being ‘aware of the risks’</li>
+<li>lower literacy–greater receptivity (Tully et al., 2025)</li>
+<li>deskilling (Anthropic, 2024, Bouchard, 2025)</li>
+<li>less security, e.g.&nbsp;<a href="https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/">Simon Willison’s lethal trifecta</a></li>
+<li><a href="https://monettdiaz.com/books-critical-ai.html">see also the list of 80+ recent books on the website of Prof.&nbsp;dr. Dagmar Monett</a></li>
+</ul>
+<blockquote>
+<p>“While automation may give the false impression of rigor and efficiency, it leads to conceptual and scientific deskilling, deteriorates reflexive theorizing…” Van Rooij &amp; Guest (2025)</p>
+</blockquote>
+</div></div>
+</section>
+<section id="critical-review-of-generated-code" class="slide level2 smaller">
+<h2>Critical review of generated code</h2>
+<div class="columns">
+<div class="column" style="width:48%;">
+<p><strong>Critical review as a way to reduce risks, and address KI-Richtlinie §2.4 (human control) and §9.1 (output verification)?</strong></p>
+<ul>
+<li>Verification, e.g.&nbsp;is x correct?</li>
+<li>Explaining, e.g.&nbsp;where does x come from?</li>
+<li>Questioning, e.g.&nbsp;is x necessary?</li>
+<li>Resisting “use it or lose it”, does using AI harm comprehension?</li>
+<li>Also, does it corrupt my work? does it give away my data? is it harmful to my personal communication, does it remove space and time to learn?</li>
+</ul>
+</div><div class="column" style="width:52%;">
+<p><strong>Idea: start from classic good practice rules of software engineering</strong></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Practice</th>
+<th>Idea</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>KISS</strong></td>
+<td>Keep it simple</td>
+</tr>
+<tr class="even">
+<td><strong>DRY</strong></td>
+<td>Don’t repeat yourself</td>
+</tr>
+<tr class="odd">
+<td><strong>YAGNI</strong></td>
+<td>You ain’t gonna need it</td>
+</tr>
+<tr class="even">
+<td><strong>SoC</strong></td>
+<td>Separation of concerns</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</section>
+<section id="clausemate-project" class="slide level2 smaller scrollable">
+<h2>Clausemate Project</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>German pronoun-clause mate extraction, see <a href="https://github.com/jobschepens/clausemate">GitHub repo</a></li>
+<li>~2,000+ lines Python code</li>
+<li>Evolved: linear script → modular → feature expansion → quality enforcement</li>
+</ul>
+<p><strong>Phase 1 → 2: From Script to Modular Design</strong></p>
+<ul>
+<li>Initial script-based approach was working fine, but lacked features</li>
+<li>Refactored: abstract base classes, typed dataclasses</li>
+<li><strong>Problem:</strong> Could have foreseen this earlier, reactive not proactive</li>
+</ul>
+<p><strong>Phase 2 → 3: Adding more Features</strong></p>
+<ul>
+<li>Added multi-file processing</li>
+<li>Created 3 separate file parsers: 1,470 total lines (60% of project!)</li>
+<li><strong>Problem:</strong> A lot of overlap between parsers.</li>
+</ul>
+<p><strong>Phase 3 → Adding Quality Checks</strong></p>
+<ul>
+<li>Adding mypy, pre-commit hooks, testing</li>
+<li><strong>Problem:</strong> Reactive measures instead of preventing issues</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>Problems with classic good practices:</strong></p>
+<ol type="1">
+<li><strong>YAGNI:</strong> Many quality checks</li>
+<li><strong>DRY:</strong> Repeated token parsing</li>
+<li><strong>SoC:</strong> Main.py handles format detection + parsing + streaming + analysis + export</li>
+<li><strong>YAGNI:</strong> <code>benchmark.py</code>, unused dependencies (spacy, scikit-learn, …)</li>
+</ol>
+<p><strong>Some additional critical developments:</strong></p>
+<ul>
+<li>Increasing fear that changes might break something</li>
+<li>Things become too complicated to explain</li>
+</ul>
+</div></div>
+</section>
+<section id="fast-iteration-vs.-slow-questioning" class="slide level2 smaller">
+<h2>Fast Iteration vs.&nbsp;Slow Questioning</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>“Fast” Iteration</strong></p>
+<pre><code>Generate (AI) → Review (Human) → 
+Refine → Integrate (one-way)</code></pre>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>✓ Fast</li>
+</ul>
+<p><strong>Problems:</strong></p>
+<ul>
+<li>⚠️ AI output may be completely wrong</li>
+<li>⚠️ Review becomes less sophisticated</li>
+<li>⚠️ Not easy to review 10 new features at once</li>
+<li>⚠️ Can quickly become too passive</li>
+</ul>
+<p><strong>Clausemate Example:</strong></p>
+<p>Three working parsers, but with much overlap. Never asked “why 3?”</p>
+</div><div class="column" style="width:50%;">
+<p><strong>“Slow” Questioning</strong>**</p>
+<pre><code>AI                  Pro-active 'Review'
+───────────         ─────────────────────
+Suggests x     ←→   Question necessity - YAGNI
+Verbose code   ←→   Demand simplicity - KISS
+Duplication    ←→   Enforce reuse - DRY
+Mixed concerns ←→   Separate clearly - SoC</code></pre>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>✓ More pro-active</li>
+<li>✓ Mandated by UzK Richtlinie</li>
+</ul>
+<p><strong>Problem:</strong></p>
+<ul>
+<li>⚠️ Requires expertise and time. “Critical thinking”</li>
+</ul>
+<p><strong>Clausemate Example:</strong></p>
+<p>Better understand text structure first before developing three different parsers.”</p>
+</div></div>
+</section>
+<section id="summary" class="slide level2 smaller scrollable">
+<h2>Summary</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Fast vs slow</strong></p>
+<ol type="1">
+<li>Short-term efficiency vs.&nbsp;long-term skill development</li>
+<li>Slowing down can identify problems, make decisions explicit</li>
+<li>Slow review better aligns with UzK KI-Richtlinie</li>
+</ol>
+<p><strong>Some principles for slow review</strong></p>
+<ol type="1">
+<li>Comprehension: Explain x (aloud) before accepting</li>
+<li>Complexity: Not just add or restructure for the sake of it</li>
+<li>Necessity: What breaks without x? YAGNI</li>
+<li>Collaboration</li>
+</ol>
+<p><strong>Warning signs</strong></p>
+<ol type="1">
+<li>Wrote x 2 weeks ago, but don’t remember</li>
+<li>Adding new things instead of fixing issues</li>
+<li>Just run and see</li>
+<li>Messy documentation (relates to UzK KI-Richtlinie §12.4’s documentation obligations)</li>
+</ol>
+</div><div class="column" style="width:50%;">
+<p><strong>Conclusions</strong></p>
+<ol type="1">
+<li>Classic best practices may help to prevent problems
+<ul>
+<li>KISS/DRY/YAGNI/SoC</li>
+</ul></li>
+<li>AI harms understanding when not slowed down
+<ul>
+<li>Critical reviewing necessary</li>
+</ul></li>
+<li>Complexity and messiness accumulate quickly
+<ul>
+<li>System becomes intransparent, difficult to verify</li>
+</ul></li>
+</ol>
+<p><strong>Take-Home Message:</strong></p>
+<p>AI builds faster than we can understand easily. Train your critical thinking skills and safeguard research integrity.</p>
+<blockquote>
+<p>“Für jede KI-gestützte Anwendung ist eine namentlich benannte Rolle mit menschlicher Letztverantwortung festzulegen.” (UzK KI Richtlinie §2.4b)</p>
+</blockquote>
+</div></div>
+</section>
+<section id="references" class="slide level2 smaller">
+<h2>References</h2>
+<p><strong>Some References:</strong></p>
+<ul>
+<li>Guest, O., et al.&nbsp;“Against Uncritical Adoption of ‘AI’ in Academia” https://philpapers.org/rec/GUEATU</li>
+<li>Anthropic: “AI-Assisted Coding Effects” https://www.anthropic.com/research/AI-assistance-coding-skills</li>
+<li>Veldhuis, Annemiek, Priscilla Y. Lo, Sadhbh Kenny, and Alissa N. Antle. “Critical Artificial Intelligence Literacy: A Scoping Review and Framework Synthesis.” International Journal of Child-Computer Interaction 43 (March 2025): 100708. https://doi.org/10.1016/j.ijcci.2024.100708.</li>
+<li>Tully, Stephanie M., Chiara Longoni, and Gil Appel. “Lower Artificial Intelligence Literacy Predicts Greater AI Receptivity.” Journal of Marketing 89, no. 5 (2025): 1–20. https://doi.org/10.1177/00222429251314491.</li>
+<li>Bouchard, Jeremie. “ChatGPT and the Separation between Knowledge and Knower.” Education and Information Technologies 30, no. 8 (2025): 10091–110. https://doi.org/10.1007/s10639-024-13249-y.</li>
+</ul>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="clausemate-review-dense_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="clausemate-review-dense_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="clausemate-review-dense_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="clausemate-review-dense_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="clausemate-review-dense_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="clausemate-review-dense_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="clausemate-review-dense_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="clausemate-review-dense_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="clausemate-review-dense_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="clausemate-review-dense_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
