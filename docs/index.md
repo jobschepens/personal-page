@@ -17,7 +17,8 @@ Since I received my PhD in 2015 from Radboud University Nijmegen, I have contrib
 
 - *Universität zu Köln, Center for Digital Humanities*
 
-- Research areas:
+Research areas:
+
   - SFB1252: Prominence in Language (Research Data & Methods)
   - Key Profile Area: Skills and Structures in Language and Cognition
   - Large Language Models for Word Frequency Estimation
