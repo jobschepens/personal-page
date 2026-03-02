@@ -14,7 +14,9 @@ Since I received my PhD in 2015 from Radboud University Nijmegen, I have contrib
 ## 📍 Current Position
 
 **Postdoctoral Researcher**
+
 - *Universität zu Köln, Center for Digital Humanities*
+
 - Research areas:
   - SFB1252: Prominence in Language (Research Data & Methods)
   - Key Profile Area: Skills and Structures in Language and Cognition
@@ -37,13 +39,13 @@ Since I received my PhD in 2015 from Radboud University Nijmegen, I have contrib
 
 ### Key Publications (2024–2016)
 
-**Schepens, J., Woloszyn, H., Marx, N., & Gagl, B. (2024). Can Large Language Models generate useful linguistic corpora? A case study of the word frequency effect in young German readers. *Open Mind, 9: 1597–1656.***  
+**Schepens, J., Woloszyn, H., Marx, N., & Gagl, B. (2024). Can Large Language Models generate useful linguistic corpora? A case study of the word frequency effect in young German readers. *Open Mind, 9: 1597–1656.***
 [doi.org/10.1162/OPMI.a.30](https://direct.mit.edu/opmi/article/doi/10.1162/OPMI.a.30/133663/Can-Large-Language-Models-Generate-Useful)
 
-**Schepens, J., van Hout, R., & Jaeger, T. F. (2020). Big data suggest strong constraints of linguistic similarity on adult language learning. *Cognition, 194: 104056.***  
+**Schepens, J., van Hout, R., & Jaeger, T. F. (2020). Big data suggest strong constraints of linguistic similarity on adult language learning. *Cognition, 194: 104056.***
 [doi.org/10.1016/j.cognition.2019.104056](https://doi.org/10.1016/j.cognition.2019.104056)
 
-**Schepens, J., Van der Slik, F., & Van Hout, R. (2016). L1 and L2 distance effects in L3 Dutch learnability. *Language Learning, 66(1): 224–256.**  
+**Schepens, J., Van der Slik, F., & Van Hout, R. (2016). L1 and L2 distance effects in L3 Dutch learnability. *Language Learning, 66(1): 224–256.**
 [doi.org/10.1111/lang.12150](https://doi.org/10.1111/lang.12150)
 
 ### Complete Publication List
